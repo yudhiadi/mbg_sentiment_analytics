@@ -1,0 +1,8 @@
+streamlit
+transformers
+torch
+pandas
+spacy
+huggingface-hub
+sentencepiece
+protobuf
