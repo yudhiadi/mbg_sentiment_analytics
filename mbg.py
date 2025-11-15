@@ -66,9 +66,9 @@ with st.sidebar:
     st.write(f"**Tipe Model:** `{MODEL_TYPE}`")
     st.markdown(
         """
-        - Backbone: BERT / IndoBERT (Transformer)
-        - Status: **Pre-trained model** di HuggingFace
-        - Digunakan hanya untuk **inference** (tanpa training ulang)
+            Backbone: RoBERTa (Transformer, family of BERT models)
+            Status: Pre-trained model di HuggingFace
+            Digunakan hanya untuk inference (tanpa training ulang)
         """
     )
 
