@@ -77,26 +77,26 @@ with st.sidebar:
 # ==========================
 def map_label(label_raw: str) -> str:
     """
-    Mapping label mentah model ke Positif / Netral / Negatif.
-    - Model Indonesia: LABEL_0, LABEL_1, LABEL_2
-    - Model multilingual: label '1 star' s.d. '5 stars'
+    Mapping label model w11wo/indonesian-roberta-base-sentiment-classifier
+    ke: Positif, Negatif, Netral
     """
-    l = label_raw.lower()
+
+    l = label_raw.lower().strip()
 
     if MODEL_TYPE == "indonesia":
-        # mapping khusus untuk mdhugol/indonesia-bert-sentiment-classification
-        # asumsi umum: LABEL_0 = positive, LABEL_1 = negative, LABEL_2 = neutral
-        if l in ("label_0", "positive", "pos"):
+        if l == "positive":
             return "Positif"
-        elif l in ("label_1", "negative", "neg"):
+        elif l == "negative":
             return "Negatif"
-        else:  # label_2 / neutral / lainnya
+        elif l == "neutral":
             return "Netral"
+        else:
+            return "Netral"  # fallback
     else:
         # multilingual 1–5 stars
         try:
             num = int(l.split()[0])
-        except Exception:
+        except:
             return "Netral"
         if num <= 2:
             return "Negatif"
@@ -104,6 +104,7 @@ def map_label(label_raw: str) -> str:
             return "Netral"
         else:
             return "Positif"
+
 
 
 def analyze_text(text: str):
